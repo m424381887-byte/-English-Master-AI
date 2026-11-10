@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="معلمك الشخصي لتعلم الإنجليزية من الصفر">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>English Master AI</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">EN</div><div><strong>English Master AI</strong><small>معلم الإنجليزية الذكي</small></div></div>
+  <button id="themeBtn" class="icon-btn" aria-label="تغيير المظهر">◐</button>
+</header>
+<main>
+  <section class="welcome panel">
+    <div><span class="eyebrow">رحلتك تبدأ من هنا</span><h1>الإنجليزية من الصفر،<br><em>خطوة بخطوة.</em></h1>
+    <p>تعلم يومياً، استمع للنطق، تدرب، وراجع تقدمك.</p></div>
+    <div class="level-orb"><b id="levelBadge">A0</b><small>مستواك</small></div>
+  </section>
+  <nav class="tabs" aria-label="الأقسام">
+    <button class="tab active" data-tab="home">الرئيسية</button>
+    <button class="tab" data-tab="lesson">درس اليوم</button>
+    <button class="tab" data-tab="tutor">المعلم الذكي</button>
+    <button class="tab" data-tab="review">المراجعة</button>
+    <button class="tab" data-tab="progress">تقدمي</button>
+  </nav>
+
+  <section id="home" class="view active">
+    <div class="section-head"><div><span class="eyebrow">لوحة التعلم</span><h2>أهلاً بك 👋</h2></div><span class="streak">🔥 <b id="streak">0</b> يوم</span></div>
+    <div class="stats">
+      <article class="stat"><span>الكلمات المتعلمة</span><b id="wordsCount">0</b></article>
+      <article class="stat"><span>الدروس المكتملة</span><b id="lessonsCount">0</b></article>
+      <article class="stat"><span>النقاط</span><b id="points">0</b></article>
+    </div>
+    <article class="panel next-card"><div><span class="eyebrow">خطوتك التالية</span><h3>ابدأ درس اليوم</h3><p>خمس كلمات أساسية مع أمثلة واختبار قصير.</p><button class="primary" data-go="lesson">ابدأ التعلم <span>←</span></button></div><div class="book-emoji">📘</div></article>
+    <div class="section-head"><h2>مسار المستويات</h2><small>تتقدم حسب إتقانك</small></div>
+    <div class="level-list" id="levelList"></div>
+    <p class="note">يعمل المنهج الأساسي والنطق والمراجعة دون اتصال بعد فتح التطبيق أول مرة. ميزات المحادثة الصوتية تعتمد على دعم المتصفح.</p>
+  </section>
+
+  <section id="lesson" class="view">
+    <div class="section-head"><div><span class="eyebrow">المستوى A0 · الوحدة الأولى</span><h2>الدرس الأول: التحية</h2></div><span class="pill">5 كلمات</span></div>
+    <div id="vocabCards" class="vocab-grid"></div>
+    <article class="panel"><span class="eyebrow">جمل مفيدة</span><div class="phrase"><b>Hello!</b><span>مرحباً!</span><button class="speak" data-say="Hello!">🔊</button></div><div class="phrase"><b>How are you?</b><span>كيف حالك؟</span><button class="speak" data-say="How are you?">🔊</button></div><div class="phrase"><b>I am fine.</b><span>أنا بخير.</span><button class="speak" data-say="I am fine.">🔊</button></div></article>
+    <article class="panel"><span class="eyebrow">قاعدة صغيرة</span><h3>الضمير I</h3><p>كلمة <b>I</b> تعني «أنا»، وتُكتب دائماً بحرف كبير. مثال: <b>I am Mohannad.</b> أي: أنا مهند.</p><button class="speak secondary" data-say="I am Mohannad.">استمع إلى المثال 🔊</button></article>
+    <article class="panel quiz"><span class="eyebrow">اختبر نفسك</span><h3>ماذا تعني كلمة Hello؟</h3><div id="quizOptions" class="options"><button data-answer="مرحبا">مرحباً</button><button data-answer="شكراً">شكراً</button><button data-answer="إلى اللقاء">إلى اللقاء</button></div><p id="quizFeedback" aria-live="polite"></p></article>
+    <button id="completeLesson" class="primary wide" disabled>أكمل الدرس بعد الإجابة</button>
+  </section>
+
+  <section id="tutor" class="view">
+    <div class="section-head"><div><span class="eyebrow">تدريب تفاعلي</span><h2>المعلم الذكي</h2></div><span class="pill">A0</span></div>
+    <article class="panel tutor-intro"><div class="tutor-avatar">✦</div><div><b>مرحباً! أنا معلمك.</b><p>اكتب إجابة قصيرة بالإنجليزية، وسأساعدك على تصحيحها. النسخة الحالية تستخدم مدرباً تعليمياً محلياً دون اتصال؛ ليست نموذج محادثة سحابياً غير محدود.</p></div></article>
+    <div id="chatLog" class="chat-log"><div class="bubble bot">Let's start! اكتب: <b>Hello</b> أو <b>My name is ...</b></div></div>
+    <div class="chat-compose"><input id="chatInput" placeholder="اكتب بالإنجليزية هنا..." autocomplete="off"><button id="sendChat" class="primary">إرسال</button></div>
+    <div class="quick-actions"><button id="micBtn" class="secondary">🎙️ تحدث</button><button class="secondary" data-say="Hello! My name is Mohannad.">🔊 استمع لمثال</button></div>
+    <p id="speechStatus" class="note" aria-live="polite">التعرف على الكلام يعمل في المتصفحات الداعمة وقد يحتاج إلى اتصال بالإنترنت.</p>
+  </section>
+
+  <section id="review" class="view">
+    <div class="section-head"><div><span class="eyebrow">تثبيت المعلومات</span><h2>مراجعة الكلمات</h2></div><span class="pill" id="reviewDue">5 كلمات</span></div>
+    <article class="panel review-card"><p class="eyebrow">ما معنى هذه الكلمة؟</p><h2 id="reviewWord">Hello</h2><div id="reviewChoices" class="options"></div><p id="reviewFeedback" aria-live="polite"></p><button id="nextReview" class="primary wide">الكلمة التالية</button></article>
+    <p class="note">تُعاد الكلمات التي تخطئ فيها بوتيرة أكبر. تُحفظ نتائجك على جهازك.</p>
+  </section>
+
+  <section id="progress" class="view">
+    <div class="section-head"><div><span class="eyebrow">إنجازاتك</span><h2>تقدمي</h2></div></div>
+    <article class="panel progress-panel"><div class="progress-ring"><b id="progressPercent">0%</b></div><div><h3>رحلتك التعليمية</h3><p>أكمل الدروس والاختبارات لرفع مستواك.</p></div></article>
+    <div class="stats"><article class="stat"><span>الكلمات المتقنة</span><b id="masteredCount">0</b></article><article class="stat"><span>أيام التعلم</span><b id="streak2">0</b></article></div>
+    <article class="panel"><h3>المهارات</h3><div class="skill"><span>المفردات</span><div><i id="skillVocab"></i></div></div><div class="skill"><span>القواعد</span><div><i style="width:5%"></i></div></div><div class="skill"><span>المحادثة</span><div><i style="width:5%"></i></div></div><p class="note">المهارات الأخرى ستُقاس مع إضافة وحدات جديدة واختبارات أكثر.</p></article>
+    <button id="installBtn" class="secondary wide" hidden>تثبيت التطبيق على الجهاز</button>
+    <button id="resetBtn" class="danger wide">إعادة ضبط التقدم</button>
+  </section>
+</main>
+<footer>English Master AI <span>نسخة أولية تعمل محلياً · 1.0</span></footer>
+<script src="app.js"></script>
+</body></html>
